@@ -54,6 +54,6 @@ public class TestClass {
 		WebElement webElement = driver.findElement(By.id("MyButton"));
 		webElement.click();
 		Boolean buttonClicked = (Boolean) driver.executeScript("return buttonClicked");
-		Assert.assertTrue(buttonClicked);
+		Assert.assertTrue("The button has not been clicked!", buttonClicked);
 	}
 }
