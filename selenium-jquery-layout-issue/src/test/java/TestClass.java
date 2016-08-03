@@ -18,15 +18,18 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 @RunWith(Parameterized.class)
 public class TestClass {
 
-	public final static String HTML_PAGE_PATH = "file:///C:/tmp/git/selenium-jquery-layout-issue/sample-html/sample.html";
-	public final static int MIN_HEIGHT = 650;
-	public final static int MAX_HEIGHT = 800;
+	public final static String HTML_PAGE_PATH = "https://olibutzki.github.io/selenium-jquery-layout-issue/sample.html";
+	public final static String MIN_HEIGHT = System.getProperty("minheight", "650");
+	public final static String MAX_HEIGHT = System.getProperty("maxheight", "800");
 
 	@Parameters(name = "height: {0}px")
 	public static Iterable<Integer> heights() {
-
+		String minHeightString = System.getProperty("minheight", "650");
+		String maxHeightString = System.getProperty("maxheight", "800");
+		Integer minHeight = Integer.valueOf(minHeightString);
+		Integer maxHeight = Integer.valueOf(maxHeightString);
 		List<Integer> list = new ArrayList<Integer>();
-		for (int i = MIN_HEIGHT; i <= MAX_HEIGHT; i++) {
+		for (int i = minHeight; i <= maxHeight; i++) {
 			list.add(i);
 		}
 
